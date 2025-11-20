@@ -15,8 +15,8 @@ body.light {
   --text: #1d1d1d;
   --card-bg: rgba(255, 255, 255, 0.55);
   --nav-bg: rgba(255, 255, 255, 0.25);
-  --accent: #9b0000;
-  --accent2: #b80000;
+  --accent: #800000;      /* Deep Maroon */
+  --accent2: #cc0033;     /* Cherry Red */
   background: var(--bg);
   color: var(--text);
 }
@@ -26,8 +26,8 @@ body.dark {
   --text: #e4e4e4;
   --card-bg: rgba(20, 20, 20, 0.55);
   --nav-bg: rgba(20, 20, 20, 0.25);
-  --accent: #ffcb00;
-  --accent2: #ffdd55;
+  --accent: #cc0033;
+  --accent2: #ff3366;
   background: var(--bg);
   color: var(--text);
 }
@@ -141,11 +141,12 @@ body.dark {
 }
 
 .hero-photo {
-  width: 280px;
-  height: 280px;
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
-  border: 6px solid var(--accent);
+  border: 4px solid var(--accent);
   object-fit: cover;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
 }
 
 .glass-card {

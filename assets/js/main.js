@@ -1,10 +1,7 @@
-/* -----------------------------------------------------------
-   DARK / LIGHT MODE TOGGLE
------------------------------------------------------------ */
+// Theme Toggle
 const themeToggle = document.getElementById("themeToggle");
 const body = document.body;
 
-// Load saved theme
 if (localStorage.getItem("theme") === "dark") {
   body.classList.remove("light");
   body.classList.add("dark");
@@ -14,7 +11,6 @@ if (localStorage.getItem("theme") === "dark") {
   themeToggle.textContent = "🌙";
 }
 
-// Toggle theme
 themeToggle.addEventListener("click", () => {
   body.classList.toggle("dark");
   body.classList.toggle("light");
@@ -28,9 +24,7 @@ themeToggle.addEventListener("click", () => {
   }
 });
 
-/* -----------------------------------------------------------
-   CERTIFICATE GALLERY LIGHTBOX
------------------------------------------------------------ */
+// Certificate Lightbox
 const lightbox = document.getElementById("lightbox");
 const lightboxImage = document.getElementById("lightboxImage");
 const closeLightbox = document.getElementById("closeLightbox");
@@ -62,9 +56,7 @@ if (closeLightbox) {
   });
 }
 
-/* -----------------------------------------------------------
-   SCROLL ANIMATION (Fade-in Elements)
------------------------------------------------------------ */
+// Scroll Animation
 const fadeElements = document.querySelectorAll(".fade-in");
 
 const observer = new IntersectionObserver(
@@ -79,12 +71,3 @@ const observer = new IntersectionObserver(
 );
 
 fadeElements.forEach((el) => observer.observe(el));
-
-/* -----------------------------------------------------------
-   FUTURE FEATURES CAN BE ADDED HERE
------------------------------------------------------------ */
-// window.vishalPortfolio = {
-//   initThemeToggle,
-//   initLightbox,
-//   initScrollAnimations
-// };

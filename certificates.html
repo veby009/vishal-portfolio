@@ -4,105 +4,71 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Certificates | Vishal Bhatt</title>
-
-  <!-- SEO -->
-  <meta name="description" content="Professional certifications of Vishal Bhatt in cybersecurity, cloud, compliance, and IT leadership.">
-
-  <!-- OpenGraph -->
-  <meta property="og:title" content="Certificates | Vishal Bhatt" />
-  <meta property="og:description" content="Explore Vishal Bhatt's certifications in cybersecurity, cloud, compliance, and IT strategy." />
-  <meta property="og:image" content="assets/img/portrait.jpg" />
-  <meta property="og:type" content="website" />
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/jpg" href="assets/img/portrait.jpg" />
-
-  <!-- CSS -->
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
-<body>
-
-<header>
-  <nav class="navbar glass-nav">
-    <div class="logo">VB</div>
+<body class="light">
+  <nav class="navbar">
+    <div class="logo">Vishal Bhatt</div>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="skills.html">Skills</a></li>
       <li><a href="projects.html">Projects</a></li>
-      <li><a class="active" href="certificates.html">Certificates</a></li>
+      <li><a href="certificates.html" class="active">Certificates</a></li>
       <li><a href="media.html">Media</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
     <button id="themeToggle" class="theme-toggle">🌙</button>
   </nav>
-</header>
 
-<section class="page-header fade-in">
-  <h1 class="page-title">Certificates</h1>
-  <p class="subtitle">Professional Certifications • Cybersecurity • Cloud • Compliance</p>
-</section>
+  <section class="glass-card fade-in">
+    <h1 class="big-title">Certificates</h1>
+    <p class="tagline">Cybersecurity • Cloud • Compliance</p>
+  </section>
 
-<section class="certificates-section fade-in">
-  <div id="certGrid" class="cert-grid">
-    <!-- Certificates will be auto-loaded here -->
+  <section class="cert-grid fade-in">
+    <div class="certificate-card">
+      <img src="assets/img/certificates/architecting-kubernetes.jpg" alt="Architecting Google Kubernetes" onclick="openLightbox(this.src)" />
+    </div>
+    <div class="certificate-card">
+      <img src="assets/img/certificates/cissp.jpg" alt="CISSP Certificate" onclick="openLightbox(this.src)" />
+    </div>
+    <div class="certificate-card">
+      <img src="assets/img/certificates/ethical-hacking.jpg" alt="Ethical Hacking Beginners" onclick="openLightbox(this.src)" />
+    </div>
+    <div class="certificate-card">
+      <img src="assets/img/certificates/intro-ai.jpg" alt="Intro to AI" onclick="openLightbox(this.src)" />
+    </div>
+    <div class="certificate-card">
+      <img src="assets/img/certificates/vishal-naresh.jpg" alt="Vishal Naresh Khat Certificate" onclick="openLightbox(this.src)" />
+    </div>
+    <div class="certificate-card">
+      <img src="assets/img/certificates/cehp.jpg" alt="C|EHP 004046 Vishal Bhatt" onclick="openLightbox(this.src)" />
+    </div>
+    <div class="certificate-card">
+      <img src="assets/img/certificates/cybercrime.jpg" alt="Intro to Cybercrime" onclick="openLightbox(this.src)" />
+    </div>
+    <div class="certificate-card">
+      <img src="assets/img/certificates/core-infra.jpg" alt="Core Infrastructure" onclick="openLightbox(this.src)" />
+    </div>
+    <div class="certificate-card">
+      <img src="assets/img/certificates/networking-plus.jpg" alt="Networking Plus" onclick="openLightbox(this.src)" />
+    </div>
+    <div class="certificate-card">
+      <img src="assets/img/certificates/cyber-hygiene.jpg" alt="Cyber Hygiene NCSAM" onclick="openLightbox(this.src)" />
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox">
+    <span id="closeLightbox" class="close-lightbox">&times;</span>
+    <img id="lightboxImage" class="lightbox-img" src="" alt="Certificate Preview" />
   </div>
-</section>
 
-<!-- Lightbox Popup -->
-<div id="lightbox" class="lightbox">
-  <span id="closeLightbox" class="close-lightbox">&times;</span>
-  <img id="lightboxImage" class="lightbox-img" src="" alt="Certificate preview">
-</div>
+  <footer class="footer">
+    © 2025 Vishal Bhatt — All Rights Reserved
+  </footer>
 
-<footer class="footer">
-  <p>© 2025 Vishal Bhatt — All Rights Reserved</p>
-</footer>
-
-<script src="assets/js/main.js"></script>
-
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const certGrid = document.getElementById("certGrid");
-
-  // Clean, lowercase, hyphenated filenames
-  const certificateFiles = [
-    "architecting-google-kubernetes.jpg",
-    "cissp-certificate.jpg",
-    "cjbep-000496-vishalbhatt.jpg",
-    "core-infra-structure.jpg",
-    "cyber-hygiene-ncsam.jpg",
-    "ethical-hacking-beginners.jpg",
-    "intro-ai.jpg",
-    "intro-cybercrime.jpg",
-    "networking-plus.jpg",
-    "vishal-bhatt-certificate-1.jpg",
-    "vishal-naresh-bhatt-certificate.jpg"
-  ];
-
-  certificateFiles.forEach(file => {
-    const card = document.createElement("div");
-    card.classList.add("certificate-card");
-
-    const img = document.createElement("img");
-    img.src = `assets/certificates/${file}`;
-    img.alt = file.replace(/-/g, " ").replace(".jpg", "");
-    img.classList.add("framed");
-
-    card.appendChild(img);
-    certGrid.appendChild(card);
-
-    // Lightbox click
-    img.addEventListener("click", () => {
-      document.getElementById("lightboxImage").src = img.src;
-      document.getElementById("lightbox").style.display = "block";
-    });
-  });
-
-  document.getElementById("closeLightbox").addEventListener("click", () => {
-    document.getElementById("lightbox").style.display = "none";
-  });
-});
-</script>
+  <script src="assets/js/main.js"></script>
 </body>
 </html>

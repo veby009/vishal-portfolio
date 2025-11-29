@@ -1,108 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vishal Bhatt | Chief Information Security Officer (CISO) Portfolio</title>
-    <!-- Load Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-    <!-- Custom CSS from GitHub assets -->
-    <link rel="stylesheet" href="https://raw.githubusercontent.com/vishalbentigrity/vishal-portfolio/main/assets/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <style>
-        :root {
-            --color-bg: #0d0d00;
-            --color-text: #e4e4e4;
-            --color-card-bg: rgba(20, 20, 20, 0.7);
-            --color-nav-bg: rgba(20, 20, 20, 0.4);
-            --color-accent: #ffcb00;
-            --color-accent-hover: #e0b000;
-            --color-primary-text: #1d1d1d;
-        }
-        .light-mode {
-            --color-bg: #f8f8f8;
-            --color-text: #1d1d1d;
-            --color-card-bg: rgba(255, 255, 255, 0.85);
-            --color-nav-bg: rgba(255, 255, 255, 0.5);
-            --color-accent: #9b0000;
-            --color-accent-hover: #b80000;
-            --color-primary-text: #e4e4e4;
-        }
-        body { font-family: 'Inter', sans-serif; background-color: var(--color-bg); color: var(--color-text); transition: background-color 0.5s, color 0.5s; }
-        .glass-nav { background-color: var(--color-nav-bg); backdrop-filter: blur(8px); }
-        .glass-card { background-color: var(--color-card-bg); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); }
-        .btn { background-color: var(--color-accent); color: var(--color-primary-text); transition: background-color 0.3s, transform 0.1s; }
-        .btn:hover { background-color: var(--color-accent-hover); transform: translateY(-1px); }
-        .highlight-text { color: var(--color-accent); }
-        .hero-photo { max-width: 100%; height: auto; border-radius: 9999px; box-shadow: 0 0 0 10px rgba(255,255,255,0.1), 0 0 40px rgba(255,203,0,0.3); transition: box-shadow 0.5s; }
-        .light-mode .hero-photo { box-shadow: 0 0 0 10px rgba(0,0,0,0.05), 0 0 40px rgba(155,0,0,0.3); }
-        .nav-link.active { border-bottom: 2px solid var(--color-accent); color: var(--color-accent); }
-        .content-section { display: none; }
-        .content-section.active { display: block; animation: fadeIn 0.6s ease-out; }
-        @keyframes fadeIn { from { opacity:0; transform:translateY(10px);} to {opacity:1; transform:translateY(0);} }
-        #lightbox { display:none; position:fixed; z-index:100; padding-top:50px; left:0; top:0; width:100%; height:100%; overflow:auto; background-color:rgba(0,0,0,0.9); justify-content:center; align-items:center; }
-        #lightboxImage { margin:auto; display:block; width:80%; max-width:900px; max-height:90vh; border-radius:12px; }
-        .close-lightbox { position:absolute; top:15px; right:35px; color:#f1f1f1; font-size:40px; font-weight:bold; transition:0.3s; cursor:pointer; }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Vishal Bhatt | Senior IT Manager | Cybersecurity & Digital Transformation</title>
+
+<!-- SEO -->
+<meta name="description" content="Vishal Bhatt — Senior IT Manager with 24+ years' experience in Cybersecurity, Cloud, Compliance, and Digital Transformation. CISO/CIO/CTO aspirant.">
+
+<!-- OpenGraph -->
+<meta property="og:title" content="Vishal Bhatt | Senior IT Manager" />
+<meta property="og:description" content="Empowering secure digital transformation with strategy, compliance, and innovation." />
+<meta property="og:image" content="https://raw.githubusercontent.com/vishalbentigrity/vishal-portfolio/main/assets/img/portrait.jpg" />
+<meta property="og:type" content="website" />
+
+<!-- Favicon -->
+<link rel="icon" type="image/jpg" href="https://raw.githubusercontent.com/vishalbentigrity/vishal-portfolio/main/assets/img/portrait.jpg" />
+
+<!-- CSS -->
+<link rel="stylesheet" href="https://raw.githubusercontent.com/vishalbentigrity/vishal-portfolio/main/assets/css/style.css" />
+
 </head>
 
-<body class="antialiased">
+<body class="light">
 
-    <!-- Header -->
-    <header class="sticky top-0 z-20">
-        <nav class="glass-nav flex justify-between items-center p-4 md:p-6 rounded-b-xl">
-            <div class="text-2xl font-bold highlight-text">VB</div>
-            <ul class="flex space-x-4 md:space-x-8 text-sm md:text-base">
-                <li><a href="#home" class="nav-link p-2">Home</a></li>
-                <li><a href="#about" class="nav-link p-2">About</a></li>
-                <li><a href="#skills" class="nav-link p-2">Skills</a></li>
-                <li><a href="#projects" class="nav-link p-2">Projects</a></li>
-                <li><a href="#certificates" class="nav-link p-2">Certificates</a></li>
-                <li><a href="#media" class="nav-link p-2">Media</a></li>
-                <li><a href="#contact" class="nav-link p-2">Contact</a></li>
-            </ul>
-            <button id="themeToggle" class="text-xl p-2 rounded-full hover:bg-white/10 transition">🌙</button>
-        </nav>
-    </header>
+<header>
+    <nav class="navbar glass-nav">
+        <div class="logo">VB</div>
+        <ul class="nav-links">
+            <li><a class="active" href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#certificates">Certificates</a></li>
+            <li><a href="#media">Media</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button id="themeToggle" class="theme-toggle">🌙</button>
+    </nav>
+</header>
 
-    <main class="max-w-7xl mx-auto p-4 md:p-8">
+<!-- HOME -->
+<section id="home" class="hero-section fade-in">
+    <div class="hero-text glass-card">
+        <h1 class="big-title">Vishal Bhatt</h1>
+        <h2 class="role-title">Senior IT Manager • CISO / CIO / CTO Aspirant</h2>
+        <p class="tagline">Empowering secure digital transformation with strategy, compliance, and innovation.</p>
+        <div class="hero-buttons">
+            <a class="btn primary" href="https://raw.githubusercontent.com/vishalbentigrity/vishal-portfolio/main/assets/docs/CV.pdf" download>Download Resume</a>
+            <a class="btn secondary" href="#contact">Hire Me</a>
+        </div>
+    </div>
+    <div class="hero-photo-container">
+        <img src="https://raw.githubusercontent.com/vishalbentigrity/vishal-portfolio/main/assets/img/portrait.jpg" class="hero-photo" alt="Portrait">
+    </div>
+</section>
 
-        <!-- HOME -->
-        <section id="home" class="content-section active min-h-screen pt-12">
-            <div class="flex flex-col md:flex-row items-center justify-between gap-12 md:gap-20">
-                <div class="md:w-3/5">
-                    <p class="text-lg highlight-text mb-2">Hello, I'm</p>
-                    <h1 class="text-5xl md:text-7xl font-extrabold mb-4">Vishal Bhatt</h1>
-                    <h2 class="text-2xl md:text-4xl font-semibold mb-6">Chief Information Security Officer (CISO) Aspirant</h2>
-                    <p class="text-lg md:text-xl mb-8 opacity-90">Strategic leader with <span class="highlight-text font-bold">24+ years of experience</span> in Cybersecurity, Regulatory Compliance (RBI, SEBI, DPDP), GRC, and Enterprise Digital Transformation.</p>
-                    <div class="flex gap-4">
-                        <a href="https://raw.githubusercontent.com/vishalbentigrity/vishal-portfolio/main/assets/docs/CV.pdf" download class="btn px-6 py-3 rounded-full font-semibold"><i class="fas fa-download mr-2"></i> Download Resume</a>
-                        <a href="#contact" class="btn px-6 py-3 rounded-full font-semibold border border-current bg-transparent text-white hover:bg-white/10" style="color: var(--color-accent)"><i class="fas fa-handshake mr-2"></i> Connect</a>
-                    </div>
-                </div>
-                <div class="md:w-2/5 flex justify-center p-4">
-                    <img src="https://raw.githubusercontent.com/vishalbentigrity/vishal-portfolio/main/assets/img/portrait.jpg" class="hero-photo w-64 h-64 md:w-80 md:h-80 object-cover" alt="Professional portrait of Vishal Bhatt">
-                </div>
-            </div>
-        </section>
+<!-- ABOUT -->
+<section id="about" class="about-section fade-in">
+    <div class="about-photo">
+        <img src="https://raw.githubusercontent.com/vishalbentigrity/vishal-portfolio/main/assets/img/portrait.jpg" class="about-img" alt="Vishal Bhatt portrait" />
+    </div>
+    <div class="about-content glass-card">
+        <h2 class="highlight">About Me</h2>
+        <h3 class="role-title">Senior IT Manager • CISO / CIO / CTO Aspirant</h3>
+        <p class="about-text">I am a visionary IT leader with 24+ years of experience in <strong>Cybersecurity, Cloud Infrastructure, Compliance, and Digital Transformation</strong>.</p>
+        <ul class="about-list">
+            <li>Cybersecurity Strategy & SOC Operations</li>
+            <li>ESXi Virtualization & Cloud Migrations</li>
+            <li>Regulatory Compliance (ISO 27001, RBI, SEBI, DPDP)</li>
+            <li>Identity Management, IAM, DLP, VAPT</li>
+        </ul>
+        <a href="https://raw.githubusercontent.com/vishalbentigrity/vishal-portfolio/main/assets/docs/CV.pdf" download class="btn primary">Download Full Resume</a>
+    </div>
+</section>
 
-        <!-- ABOUT -->
-        <!-- (content unchanged, text only) -->
+<!-- SKILLS -->
+<section id="skills" class="skills-section fade-in">
+    <div class="skills-grid">
+        <div class="skill-card glass-card"><h3>🔐 Security</h3><ul><li>VAPT</li><li>DLP</li><li>IAM</li><li>SOC Operations</li></ul></div>
+        <div class="skill-card glass-card"><h3>☁ Infrastructure</h3><ul><li>VMware ESXi</li><li>Windows Server</li><li>Azure AD</li></ul></div>
+        <div class="skill-card glass-card"><h3>📜 Compliance</h3><ul><li>ISO 27001</li><li>DPDP Act</li><li>RBI Guidelines</li></ul></div>
+        <div class="skill-card glass-card"><h3>🛠 Tools</h3><ul><li>SIEM</li><li>SolarWinds</li><li>ManageEngine</li></ul></div>
+    </div>
+</section>
 
-        <!-- SKILLS -->
-        <!-- (content unchanged, text only) -->
+<!-- PROJECTS -->
+<section id="projects" class="projects-section fade-in">
+    <div class="projects-grid">
+        <div class="project-card glass-card"><h3>ESXi 6.5 Deployment</h3><p>Deployed VMware ESXi clusters across 30+ sites.</p></div>
+        <div class="project-card glass-card"><h3>AI-Based Biometric Access</h3><p>Implemented enterprise-grade AI-driven biometric security.</p></div>
+        <div class="project-card glass-card"><h3>Windows Server 2022 Migration</h3><p>Migrated workloads to Windows Server 2022 VMs.</p></div>
+        <div class="project-card glass-card"><h3>Cloud Optimization</h3><p>Optimized cloud resources with SmartFlow + CMYK.</p></div>
+    </div>
+</section>
 
-        <!-- PROJECTS -->
-        <!-- (content unchanged, text only) -->
+<!-- CERTIFICATES -->
+<section id="certificates" class="certificates-section fade-in">
+    <div id="certGrid" class="cert-grid"></div>
+</section>
+<div id="lightbox" class="lightbox">
+    <span id="closeLightbox" class="close-lightbox">&times;</span>
+    <img id="lightboxImage" class="lightbox-img" src="">
+</div>
 
-        <!-- CERTIFICATES -->
-        <!-- (updated with GitHub paths as shown earlier) -->
+<!-- MEDIA -->
+<section id="media" class="media-section fade-in">
+    <div class="video-container glass-card">
+        <video controls class="video-player" poster="https://raw.githubusercontent.com/vishalbentigrity/vishal-portfolio/main/assets/OGIMAGE%202.png">
+            <source src="https://raw.githubusercontent.com/vishalbentigrity/vishal-portfolio/main/assets/media/Vishal%20Bhatt%20Senior%20IT%20Manager%20Digital%20Transformation%20Strategist%20.mp4" type="video/mp4">
+            Your browser does not support video playback.
+        </video>
+    </div>
+</section>
 
-        <!-- MEDIA -->
-        <section id="media" class="content-section pt-12">
-            <h1 class="text-4xl md:text-5xl font-bold mb-10 highlight-text border-b-2 pb-2" style="border-color: var(--color-accent)">Media Showcase</h1>
-            <div class="glass-card p-6 rounded-xl">
-                <video controls class="w-full h-full object-cover" poster="https://raw.githubusercontent.com/vishalbentigrity/vishal-portfolio/main/assets/OGIMAGE%202.png">
-                    <source src="https://raw.githubusercontent.com/vishalbentigrity/vishal-portfolio/main/assets/media/Vishal%20Bhatt
+<!-- CONTACT -->
+<section id="contact" class="contact-section fade-in">
+    <div class="contact-grid">
+        <div class="contact-card glass-card">
+            <h3 class="highlight">Contact Information</h3>
+            <p><strong>Email:</strong> <a href="mailto:veby9@gmail.com">veby9@gmail.com</a></p>
+            <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/vishal-bhatt-b0306718/" target="_blank">View Profile</a></p>
+            <p><strong>GitHub:</strong> <a href="https://github.com/veby009" target="_blank">/veby009</a></p>
+        </div>
+        <div class="qr-card glass-card">
+            <h3>QR Code</h3>
+            <img src="https://raw.githubusercontent.com/vishalbentigrity/vishal-portfolio/main/assets/img/qr.png" class="qr-img" alt="QR Code">
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <p>© 2025 Vishal Bhatt — All Rights Reserved</p>
+</footer>
+
+<!-- JS -->
+<script src="https://raw.githubusercontent.com/vishalbentigrity/vishal-portfolio/main/assets/js/main.js"></script>
+
+<script>
+// Auto-load certificates
+document.addEventListener("DOMContentLoaded", () => {
+    const certGrid = document.getElementById("certGrid");

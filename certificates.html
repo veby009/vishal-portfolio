@@ -1,16 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Certificates</title>
-  <link rel="stylesheet" href="assets/css/style.css">
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Certificates | Vishal Bhatt</title>
+
+<!-- CSS hosted on GitHub -->
+<link rel="stylesheet" href="https://raw.githubusercontent.com/vishalbentigrity/vishal-portfolio/main/assets/css/style.css" />
+
+<!-- Favicon portrait hosted on GitHub -->
+<link rel="icon" type="image/jpg" href="https://raw.githubusercontent.com/vishalbentigrity/vishal-portfolio/main/assets/img/portrait.jpg" />
+
 </head>
+
 <body>
-  <section id="certifications" class="py-12 px-6 grid grid-cols-2 gap-6">
-    <img src="assets/img/certificates/cert1.jpg" alt="Certificate 1">
-    <img src="assets/img/certificates/cert2.jpg" alt="Certificate 2">
-    <img src="assets/img/certificates/cert3.jpg" alt="Certificate 3">
-    <img src="assets/img/certificates/cert4.jpg" alt="Certificate 4">
-  </section>
+
+<header>
+    <nav class="navbar glass-nav">
+        <div class="logo">VB</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="skills.html">Skills</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a class="active" href="certificates.html">Certificates</a></li>
+            <li><a href="media.html">Media</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+
+        <button id="themeToggle" class="theme-toggle">🌙</button>
+    </nav>
+</header>
+
+<section class="page-header fade-in">
+    <h1 class="page-title">Certificates</h1>
+    <p class="subtitle">Professional Certifications | Cybersecurity | Cloud | Compliance</p>
+</section>
+
+<section class="certificates-section fade-in">
+    <div id="certGrid" class="cert-grid">
+        <!-- Script will auto-load certificates here -->
+    </div>
+</section>
+
+<!-- Lightbox Popup -->
+<div id="lightbox" class="lightbox">
+    <span id="closeLightbox" class="close-lightbox">&times;</span>
+    <img id="lightboxImage" class="lightbox-img" src="">
+</div>
+
+<footer class="footer">
+    <p>© 2025 Vishal Bhatt — All Rights Reserved</p>
+</footer>
+
+<!-- JS hosted on GitHub -->
+<script src="https://raw.githubusercontent.com/vishalbentigrity/vishal-portfolio/main/assets/js/main.js"></script>
+
+<script>
+// Auto-load certificate images from GitHub repo
+document.addEventListener("DOMContentLoaded", () => {
+    const certGrid = document.getElementById("certGrid");
+
+    // List all certificates automatically
+    const certificateFiles = [
+        "architecting-google-kubernetes.jpg",
+        "Certificate.jpg",
+        "cissp-certificate.jpg",
+        "cjbep_000496_VISHALBHATT.jpg",
+        "CORE-INFRIA%20STRUCTUR.jpg",
+        "Cyber%20Hygienes%20-NCSAM_.jpg",
+        "ETHICAL%20HACKING%20FOR%20BEGINNERS.jpg",
+        "INTRO-AI.jpg",
+        "INTRO-CYBERCRIME.jpg",
+        "NETWORKING%20+.jpg",
+        "Vishal_Bhatt_Certificate%20(1).jpg",
+        "Vishal_Naresh_Bhatt_Certifi_.jpg"
+    ];
+
+    certificateFiles.forEach(file => {
+        const card = document.createElement("div");
+        card.className = "certificate-card glass-card";
+        card.innerHTML = `
+            <img src="https://raw.githubusercontent.com/vishalbentigrity/vishal-portfolio/main/assets/img/certificates/${file}" 
+                 alt="${file}" class="certificate-img" 
+                 onclick="openLightbox('https://raw.githubusercontent.com/vishalbentigrity/vishal-portfolio/main/assets/img/certificates/${file}')">
+        `;
+        certGrid.appendChild(card);
+    });
+});
+
+// Lightbox functions
+function openLightbox(src) {
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImage = document.getElementById("lightboxImage");
+    lightbox.style.display = "flex";
+    lightboxImage.src = src;
+}
+
+document.getElementById("closeLightbox").addEventListener("click", () => {
+    document.getElementById("lightbox").style.display = "none";
+});
+</script>
+
 </body>
 </html>

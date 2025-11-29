@@ -1,38 +1,572 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vishal Bhatt | CIO/CTO/CISO Portfolio</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vishal Bhatt | Chief Information Security Officer (CISO) Portfolio</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" xintegrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0wLhR2I2vQYQ+1c9NlH/c3q5/a3f4e/1o01oQzL/3b0K/XgK+g5h7z3l0Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        :root {
+            --color-bg: #0d0d00;
+            --color-text: #e4e4e4;
+            --color-card-bg: rgba(20, 20, 20, 0.7);
+            --color-nav-bg: rgba(20, 20, 20, 0.4);
+            --color-accent: #ffcb00;
+            --color-accent-hover: #e0b000;
+            --color-primary-text: #1d1d1d;
+        }
+
+        .light-mode {
+            --color-bg: #f8f8f8;
+            --color-text: #1d1d1d;
+            --color-card-bg: rgba(255, 255, 255, 0.85);
+            --color-nav-bg: rgba(255, 255, 255, 0.5);
+            --color-accent: #9b0000;
+            --color-accent-hover: #b80000;
+            --color-primary-text: #e4e4e4;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            transition: background-color 0.5s, color 0.5s;
+        }
+
+        .glass-nav {
+            background-color: var(--color-nav-bg);
+            backdrop-filter: blur(8px);
+        }
+
+        .glass-card {
+            background-color: var(--color-card-bg);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn {
+            background-color: var(--color-accent);
+            color: var(--color-primary-text);
+            transition: background-color 0.3s, transform 0.1s;
+        }
+
+        .btn:hover {
+            background-color: var(--color-accent-hover);
+            transform: translateY(-1px);
+        }
+
+        .highlight-text {
+            color: var(--color-accent);
+        }
+
+        /* Responsive Hero Image */
+        .hero-photo {
+            max-width: 100%;
+            height: auto;
+            border-radius: 9999px; /* full circle */
+            box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.1), 0 0 40px rgba(255, 203, 0, 0.3);
+            transition: box-shadow 0.5s;
+        }
+
+        .light-mode .hero-photo {
+            box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.05), 0 0 40px rgba(155, 0, 0, 0.3);
+        }
+
+        .nav-link.active {
+            border-bottom: 2px solid var(--color-accent);
+            color: var(--color-accent);
+        }
+
+        /* Content Sections Management */
+        .content-section {
+            display: none;
+        }
+        .content-section.active {
+            display: block;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Lightbox for Certificates */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            padding-top: 50px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.9);
+            justify-content: center;
+            align-items: center;
+        }
+        #lightboxImage {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 900px;
+            max-height: 90vh;
+            border-radius: 12px;
+        }
+        .close-lightbox {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+    </style>
 </head>
-<body class="font-inter bg-white text-gray-800">
 
-  <!-- Hero -->
-  <section id="hero" class="text-center py-12">
-    <img src="assets/photos/portrait.jpg" alt="Vishal Bhatt Portrait" class="mx-auto w-24 h-24 mb-4 rounded-full shadow-lg" />
-    <h1 class="text-4xl font-bold">Vishal Bhatt</h1>
-    <p class="text-lg mt-2">Senior IT Manager | CIO/CTO/CISO Aspirant</p>
-    <a href="assets/docs/C.V.pdf" target="_blank" class="btn-primary mt-6 inline-block">📄 Download Resume</a>
-  </section>
+<body class="antialiased">
 
-  <!-- Video -->
-  <section class="py-12 px-6 text-center bg-gray-50">
-    <video controls class="w-full max-w-3xl h-64 mx-auto rounded-lg shadow-lg">
-      <source src="assets/media/vishal-portfolio.mp4" type="video/mp4" />
-    </video>
-    <p class="mt-6 text-lg">Recruiter-ready video showcasing cybersecurity, compliance, and digital transformation leadership.</p>
-  </section>
+    <!-- Header and Navigation -->
+    <header class="sticky top-0 z-20">
+        <nav class="glass-nav flex justify-between items-center p-4 md:p-6 rounded-b-xl">
+            <div class="text-2xl font-bold highlight-text">VB</div>
+            <ul class="flex space-x-4 md:space-x-8 text-sm md:text-base">
+                <li><a href="#home" class="nav-link p-2">Home</a></li>
+                <li><a href="#about" class="nav-link p-2">About</a></li>
+                <li><a href="#skills" class="nav-link p-2">Skills</a></li>
+                <li><a href="#projects" class="nav-link p-2">Projects</a></li>
+                <li><a href="#certificates" class="nav-link p-2">Certificates</a></li>
+                <li><a href="#media" class="nav-link p-2">Media</a></li>
+                <li><a href="#contact" class="nav-link p-2">Contact</a></li>
+            </ul>
+            <button id="themeToggle" class="text-xl p-2 rounded-full hover:bg-white/10 transition">🌙</button>
+        </nav>
+    </header>
 
-  <!-- Contact -->
-  <section id="contact" class="py-12 px-6 text-center">
-    <img src="assets/stock/qr.png" alt="QR Code to Portfolio" class="mx-auto h-32 w-32 mb-6" />
-    <p class="text-lg">📧 <a href="mailto:veby009@gmail.com" class="text-indigo-600 hover:underline">veby009@gmail.com</a></p>
-    <p class="text-lg">🔗 <a href="https://www.linkedin.com/in/vishal-bhatt" target="_blank" class="text-indigo-600 hover:underline">LinkedIn Profile</a></p>
-  </section>
+    <main class="max-w-7xl mx-auto p-4 md:p-8">
+        
+        <!-- ============================================== -->
+        <!-- 1. HOME SECTION -->
+        <!-- ============================================== -->
+        <section id="home" class="content-section active min-h-screen pt-12">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-12 md:gap-20">
+                
+                <!-- Text Content -->
+                <div class="md:w-3/5">
+                    <p class="text-lg highlight-text mb-2">Hello, I'm</p>
+                    <h1 class="text-5xl md:text-7xl font-extrabold mb-4">Vishal Bhatt</h1>
+                    <h2 class="text-2xl md:text-4xl font-semibold mb-6">
+                        Chief Information Security Officer (CISO) Aspirant
+                    </h2>
+                    <p class="text-lg md:text-xl mb-8 opacity-90">
+                        Strategic leader with <span class="highlight-text font-bold">24+ years of experience</span> in Cybersecurity, Regulatory Compliance (RBI, SEBI, DPDP), GRC, and Enterprise Digital Transformation. I transform security from a cost center into a strategic business enabler.
+                    </p>
 
+                    <div class="flex gap-4">
+                        <!-- Note: Replace with actual PDF path if hosted -->
+                        <a href="assets/pdf/VISHAL BHATT Chief Information Security Officer.pdf" download class="btn px-6 py-3 rounded-full font-semibold">
+                            <i class="fas fa-download mr-2"></i> Download Resume
+                        </a>
+                        <a href="#contact" class="btn px-6 py-3 rounded-full font-semibold border border-current bg-transparent text-white hover:bg-white/10" style="color: var(--color-accent)">
+                            <i class="fas fa-handshake mr-2"></i> Connect
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Photo Container -->
+                <div class="md:w-2/5 flex justify-center p-4">
+                    <!-- Placeholder for the main professional portrait -->
+                    <img src="https://placehold.co/400x400/0d0d0d/ffcb00?text=Vishal+Bhatt+Portrait" 
+                         onerror="this.onerror=null;this.src='https://placehold.co/400x400/0d0d0d/ffcb00?text=Vishal+Bhatt';"
+                         class="hero-photo w-64 h-64 md:w-80 md:h-80 object-cover" 
+                         alt="Professional portrait of Vishal Bhatt">
+                </div>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="glass-card p-5 text-center rounded-xl">
+                    <h3 class="text-4xl font-bold highlight-text">24+</h3>
+                    <p class="text-sm opacity-80 mt-1">Years Experience</p>
+                </div>
+                <div class="glass-card p-5 text-center rounded-xl">
+                    <h3 class="text-4xl font-bold highlight-text">40%</h3>
+                    <p class="text-sm opacity-80 mt-1">Vulnerability Reduction</p>
+                </div>
+                <div class="glass-card p-5 text-center rounded-xl">
+                    <h3 class="text-4xl font-bold highlight-text">35%</h3>
+                    <p class="text-sm opacity-80 mt-1">RTO Improvement</p>
+                </div>
+                <div class="glass-card p-5 text-center rounded-xl">
+                    <h3 class="text-4xl font-bold highlight-text"><i class="fas fa-award"></i></h3>
+                    <p class="text-sm opacity-80 mt-1">CISSP Certified</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================== -->
+        <!-- 2. ABOUT SECTION -->
+        <!-- ============================================== -->
+        <section id="about" class="content-section pt-12">
+            <h1 class="text-4xl md:text-5xl font-bold mb-10 highlight-text border-b-2 pb-2" style="border-color: var(--color-accent)">About Me</h1>
+
+            <div class="glass-card p-8 rounded-xl space-y-6 text-lg">
+                <p>
+                    I am an accomplished **Chief Information Security Officer (CISO)** and strategic leader with over 24 years of comprehensive experience building, securing, and managing enterprise IT infrastructure across diverse sectors, including **Finance, Telecom, and IT Services**. I am dedicated to transforming cybersecurity from a reactive function into a strategic business enabler that directly supports organizational resilience and growth.
+                </p>
+                <p>
+                    My expertise is proven in designing and aligning cybersecurity programs with complex regulatory frameworks, ensuring strict compliance with: **RBI guidelines, SEBI regulations, DPDP Act 2023, and ISO 27001 standards**. I lead comprehensive GRC (Governance, Risk, and Compliance) functions, manage regulatory audits, and oversee risk assessment & risk mitigation planning to secure multi-site operations and mitigate enterprise-level risk.
+                </p>
+                <h3 class="text-2xl font-semibold highlight-text mt-8 mb-4">Core Leadership Value</h3>
+                <ul class="list-disc list-inside space-y-2 ml-4 grid grid-cols-1 md:grid-cols-2">
+                    <li><i class="fas fa-shield-alt mr-2 text-yellow-500"></i> **Strategic Security Leadership:** Serving as a trusted advisor to executive leadership and frequently acting as a Board-level representative.</li>
+                    <li><i class="fas fa-chart-line mr-2 text-yellow-500"></i> **Measurable Business Impact:** Achieving a **40% vulnerability reduction** and enhancing disaster recovery with a **35% RTO improvement**.</li>
+                    <li><i class="fas fa-cloud mr-2 text-yellow-500"></i> **Cloud & Infrastructure Modernization:** Expertise in VMware ESXi, Windows Server 2022, and leading successful cloud transformation projects.</li>
+                    <li><i class="fas fa-lock mr-2 text-yellow-500"></i> **Compliance Excellence:** Deep knowledge in managing and auditing adherence to major Indian financial and data privacy regulations.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ============================================== -->
+        <!-- 3. SKILLS SECTION -->
+        <!-- ============================================== -->
+        <section id="skills" class="content-section pt-12">
+            <h1 class="text-4xl md:text-5xl font-bold mb-10 highlight-text border-b-2 pb-2" style="border-color: var(--color-accent)">Core Competencies</h1>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <div class="skill-card glass-card p-6 rounded-xl">
+                    <h3 class="text-2xl font-semibold highlight-text mb-4"><i class="fas fa-fingerprint mr-2"></i> Cybersecurity & GRC</h3>
+                    <ul class="space-y-2 text-base">
+                        <li><i class="far fa-check-circle mr-2"></i> SOC Operations & Incident Response</li>
+                        <li><i class="far fa-check-circle mr-2"></i> Identity & Access Management (IAM) / DLP</li>
+                        <li><i class="far fa-check-circle mr-2"></i> Vulnerability Assessment & Penetration Testing (VAPT)</li>
+                        <li><i class="far fa-check-circle mr-2"></i> ISO 27001 Implementation & Auditing</li>
+                        <li><i class="far fa-check-circle mr-2"></i> Regulatory Compliance (RBI, SEBI, DPDP)</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card glass-card p-6 rounded-xl">
+                    <h3 class="text-2xl font-semibold highlight-text mb-4"><i class="fas fa-server mr-2"></i> Cloud & Infrastructure</h3>
+                    <ul class="space-y-2 text-base">
+                        <li><i class="far fa-check-circle mr-2"></i> VMware ESXi Virtualization Management</li>
+                        <li><i class="far fa-check-circle mr-2"></i> Hybrid & Multi-Cloud Migration Strategy</li>
+                        <li><i class="far fa-check-circle mr-2"></i> Core Infrastructure (GCP, Azure)</li>
+                        <li><i class="far fa-check-circle mr-2"></i> Kubernetes Engine Deployment & Management</li>
+                        <li><i class="far fa-check-circle mr-2"></i> Windows Server 2022 VM Deployment</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card glass-card p-6 rounded-xl">
+                    <h3 class="text-2xl font-semibold highlight-text mb-4"><i class="fas fa-user-tie mr-2"></i> Leadership & Strategy</h3>
+                    <ul class="space-y-2 text-base">
+                        <li><i class="far fa-check-circle mr-2"></i> Enterprise IT Transformation</li>
+                        <li><i class="far fa-check-circle mr-2"></i> Digital Branding & Recruiter Engagement</li>
+                        <li><i class="far fa-check-circle mr-2"></i> Team Empowerment & Mentorship</li>
+                        <li><i class="far fa-check-circle mr-2"></i> Budget Management & Vendor Negotiation</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card glass-card p-6 rounded-xl lg:col-span-3">
+                    <h3 class="text-2xl font-semibold highlight-text mb-4"><i class="fas fa-brain mr-2"></i> Emerging Technologies</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="bg-yellow-600/30 text-yellow-300 px-4 py-1 rounded-full text-sm">Artificial Intelligence (AI)</span>
+                        <span class="bg-yellow-600/30 text-yellow-300 px-4 py-1 rounded-full text-sm">Ethical Hacking</span>
+                        <span class="bg-yellow-600/30 text-yellow-300 px-4 py-1 rounded-full text-sm">Zero Trust Architecture</span>
+                        <span class="bg-yellow-600/30 text-yellow-300 px-4 py-1 rounded-full text-sm">Astrology & Vastu Integration (Digital Assets)</span>
+                        <span class="bg-yellow-600/30 text-yellow-300 px-4 py-1 rounded-full text-sm">Digital Forensics</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ============================================== -->
+        <!-- 4. PROJECTS SECTION -->
+        <!-- ============================================== -->
+        <section id="projects" class="content-section pt-12">
+            <h1 class="text-4xl md:text-5xl font-bold mb-10 highlight-text border-b-2 pb-2" style="border-color: var(--color-accent)">Key Projects & Achievements</h1>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- Project 1 -->
+                <div class="project-card glass-card p-6 rounded-xl hover:shadow-xl transition duration-300">
+                    <h3 class="text-2xl font-bold mb-3 highlight-text">Enterprise ESXi Virtualization Deployment</h3>
+                    <p class="mb-3 text-base opacity-90">
+                        Successfully led the deployment and management of a high-availability VMware ESXi virtualization cluster for critical business operations across multiple sites.
+                    </p>
+                    <p class="font-semibold text-sm">Result: <span class="text-green-400">Achieved 35% RTO improvement</span> and significantly consolidated physical server footprint, leading to cost savings.</p>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card glass-card p-6 rounded-xl hover:shadow-xl transition duration-300">
+                    <h3 class="text-2xl font-bold mb-3 highlight-text">AI-Based Biometric Access Rollout</h3>
+                    <p class="mb-3 text-base opacity-90">
+                        Implemented an enterprise-grade AI-driven biometric security system improving physical access control, monitoring, and compliance for secure facilities.
+                    </p>
+                    <p class="font-semibold text-sm">Result: <span class="text-green-400">50% faster authentication</span>, improved audit trails, and enhanced compliance reporting quality.</p>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card glass-card p-6 rounded-xl hover:shadow-xl transition duration-300">
+                    <h3 class="text-2xl font-bold mb-3 highlight-text">Regulatory Compliance Framework Overhaul</h3>
+                    <p class="mb-3 text-base opacity-90">
+                        Spearheaded a complete overhaul of the GRC framework to align IT policies and controls with new mandates from **RBI, SEBI, and the DPDP Act**.
+                    </p>
+                    <p class="font-semibold text-sm">Result: **<span class="text-green-400">100% successful compliance audit status</span>** and a reduction in external audit findings.</p>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card glass-card p-6 rounded-xl hover:shadow-xl transition duration-300">
+                    <h3 class="text-2xl font-bold mb-3 highlight-text">Cloud Optimization & Cost Management</h3>
+                    <p class="mb-3 text-base opacity-90">
+                        Drove a cloud resource optimization strategy, integrating advanced frameworks to reduce compute waste and improve visibility.
+                    </p>
+                    <p class="font-semibold text-sm">Result: **<span class="text-green-400">20% reduction in monthly cloud expenditure</span>** while improving system performance benchmarks.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ============================================== -->
+        <!-- 5. CERTIFICATES SECTION -->
+        <!-- ============================================== -->
+        <section id="certificates" class="content-section pt-12">
+            <h1 class="text-4xl md:text-5xl font-bold mb-10 highlight-text border-b-2 pb-2" style="border-color: var(--color-accent)">Professional Certifications</h1>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="certGrid">
+                
+                <!-- Cert 1 (CISSP) -->
+                <div class="certificate-card glass-card p-4 rounded-xl text-center cursor-pointer hover:shadow-2xl transition duration-300" onclick="openLightbox('https://placehold.co/800x600/363636/ffcb00?text=CISSP+Certificate')">
+                    <i class="fas fa-shield-alt text-4xl highlight-text mb-2"></i>
+                    <h3 class="font-semibold text-lg">CISSP - Certified Information Systems Security Professional</h3>
+                    <p class="text-sm opacity-70">Gold Standard in Security Leadership</p>
+                </div>
+
+                <!-- Cert 2 (Kubernetes) -->
+                <div class="certificate-card glass-card p-4 rounded-xl text-center cursor-pointer hover:shadow-2xl transition duration-300" onclick="openLightbox('https://placehold.co/800x600/363636/ffcb00?text=Architecting+with+Google+Kubernetes+Engine')">
+                    <i class="fas fa-cubes text-4xl highlight-text mb-2"></i>
+                    <h3 class="font-semibold text-lg">Architecting with Google Kubernetes Engine</h3>
+                    <p class="text-sm opacity-70">TechGig | July 2024</p>
+                </div>
+
+                <!-- Cert 3 (Core Infra) -->
+                <div class="certificate-card glass-card p-4 rounded-xl text-center cursor-pointer hover:shadow-2xl transition duration-300" onclick="openLightbox('https://placehold.co/800x600/363636/ffcb00?text=Core+Infrastructure')">
+                    <i class="fas fa-cogs text-4xl highlight-text mb-2"></i>
+                    <h3 class="font-semibold text-lg">Core Infrastructure (GCP)</h3>
+                    <p class="text-sm opacity-70">TechGig | June 2024</p>
+                </div>
+
+                <!-- Cert 4 (Ethical Hacking) -->
+                <div class="certificate-card glass-card p-4 rounded-xl text-center cursor-pointer hover:shadow-2xl transition duration-300" onclick="openLightbox('https://placehold.co/800x600/363636/ffcb00?text=Ethical+Hacking+for+Beginners')">
+                    <i class="fas fa-code text-4xl highlight-text mb-2"></i>
+                    <h3 class="font-semibold text-lg">Ethical Hacking for Beginners</h3>
+                    <p class="text-sm opacity-70">Simplilearn | October 2024</p>
+                </div>
+
+                <!-- Cert 5 (AI) -->
+                <div class="certificate-card glass-card p-4 rounded-xl text-center cursor-pointer hover:shadow-2xl transition duration-300" onclick="openLightbox('https://placehold.co/800x600/363636/ffcb00?text=Introduction+to+Artificial+Intelligence')">
+                    <i class="fas fa-robot text-4xl highlight-text mb-2"></i>
+                    <h3 class="font-semibold text-lg">Introduction to Artificial Intelligence</h3>
+                    <p class="text-sm opacity-70">Simplilearn | January 2025</p>
+                </div>
+
+                <!-- Cert 6 (Cybercrime) -->
+                <div class="certificate-card glass-card p-4 rounded-xl text-center cursor-pointer hover:shadow-2xl transition duration-300" onclick="openLightbox('https://placehold.co/800x600/363636/ffcb00?text=Introduction+to+Cybercrime')">
+                    <i class="fas fa-exclamation-triangle text-4xl highlight-text mb-2"></i>
+                    <h3 class="font-semibold text-lg">Introduction to Cybercrime</h3>
+                    <p class="text-sm opacity-70">Simplilearn | December 2024</p>
+                </div>
+                
+                <!-- Cert 7 (Cyber Hygiene) -->
+                <div class="certificate-card glass-card p-4 rounded-xl text-center cursor-pointer hover:shadow-2xl transition duration-300" onclick="openLightbox('https://placehold.co/800x600/363636/ffcb00?text=Cyber+Hygiene+Practices')">
+                    <i class="fas fa-hand-sparkles text-4xl highlight-text mb-2"></i>
+                    <h3 class="font-semibold text-lg">Cyber Hygiene Practices - NCSAM</h3>
+                    <p class="text-sm opacity-70">I4C, MHA | October 2024</p>
+                </div>
+
+            </div>
+
+            <!-- Lightbox Modal -->
+            <div id="lightbox" class="fixed inset-0 flex justify-center items-center bg-black/90 transition-opacity duration-300">
+                <span class="close-lightbox absolute top-4 right-6 text-5xl cursor-pointer text-white/70 hover:text-white" id="closeLightbox">&times;</span>
+                <img id="lightboxImage" class="max-w-[90vw] max-h-[90vh] rounded-xl shadow-2xl" src="" alt="Certificate View">
+            </div>
+        </section>
+
+        <!-- ============================================== -->
+        <!-- 6. MEDIA SECTION -->
+        <!-- ============================================== -->
+        <section id="media" class="content-section pt-12">
+            <h1 class="text-4xl md:text-5xl font-bold mb-10 highlight-text border-b-2 pb-2" style="border-color: var(--color-accent)">Digital Transformation Journey</h1>
+            
+            <div class="glass-card p-6 rounded-xl max-w-4xl mx-auto">
+                <p class="text-lg mb-6 opacity-90">
+                    Watch the introductory video that summarizes my experience, strategic vision, and commitment to leading secure and successful digital transformation initiatives across the enterprise.
+                </p>
+                <div class="video-container aspect-video overflow-hidden rounded-xl shadow-2xl">
+                    <!-- Placeholder video path based on uploaded file: Vishal Bhatt Senior IT Manager Digital Transformation Strategist.mp4 -->
+                    <video controls class="w-full h-full object-cover" poster="https://placehold.co/900x500/1e1e1e/ffcb00?text=Video+Preview">
+                        <source src="assets/video/Vishal Bhatt Senior IT Manager Digital Transformation Strategist.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================== -->
+        <!-- 7. CONTACT SECTION -->
+        <!-- ============================================== -->
+        <section id="contact" class="content-section pt-12 min-h-[70vh]">
+            <h1 class="text-4xl md:text-5xl font-bold mb-10 highlight-text border-b-2 pb-2" style="border-color: var(--color-accent)">Let's Connect</h1>
+            
+            <div class="flex flex-col md:flex-row gap-8 justify-center">
+
+                <div class="contact-card glass-card p-8 rounded-xl w-full md:w-1/3 space-y-4">
+                    <h3 class="text-2xl font-bold highlight-text mb-4"><i class="fas fa-map-marker-alt mr-2"></i> Contact Details</h3>
+                    <p class="text-lg"><span class="font-semibold">Location:</span> Anand, Gujarat, India</p>
+                    <p class="text-lg"><span class="font-semibold">Phone:</span> <a href="tel:+919428219280" class="hover:underline">+91-9428219280</a></p>
+                    <p class="text-lg"><span class="font-semibold">Email:</span> <a href="mailto:veby009@gmail.com" class="hover:underline">veby009@gmail.com</a></p>
+                    <p class="text-lg"><span class="font-semibold">LinkedIn:</span> <a href="https://linkedin.com/in/vishal-bhatt-b0306718" target="_blank" rel="noopener noreferrer" class="hover:underline">View Profile</a></p>
+                    <p class="text-lg"><span class="font-semibold">GitHub:</span> <a href="https://github.com/veby009" target="_blank" rel="noopener noreferrer" class="hover:underline">/veby009</a></p>
+                </div>
+                
+                <div class="contact-card glass-card p-8 rounded-xl w-full md:w-2/3 space-y-4">
+                    <h3 class="text-2xl font-bold highlight-text mb-4"><i class="fas fa-briefcase mr-2"></i> Availability</h3>
+                    <p class="text-lg">
+                        I am actively seeking **Chief Information Security Officer (CISO)**, **Chief Information Officer (CIO)**, or **Chief Technology Officer (CTO)** positions where I can leverage my 24+ years of experience to drive security strategy, ensure regulatory compliance, and lead digital transformation.
+                    </p>
+                    <p class="text-lg font-semibold">
+                        Let's discuss how my expertise in cybersecurity leadership and GRC can contribute to your organization's success.
+                    </p>
+                    <!-- Simple Contact Form Placeholder -->
+                    <form class="space-y-4 pt-4">
+                        <input type="text" placeholder="Your Name" class="w-full p-3 rounded-lg bg-white/10 border border-white/20 focus:outline-none focus:border-yellow-500 transition" required>
+                        <input type="email" placeholder="Your Email" class="w-full p-3 rounded-lg bg-white/10 border border-white/20 focus:outline-none focus:border-yellow-500 transition" required>
+                        <textarea placeholder="Your Message / Inquiry" rows="4" class="w-full p-3 rounded-lg bg-white/10 border border-white/20 focus:outline-none focus:border-yellow-500 transition" required></textarea>
+                        <button type="submit" class="btn w-full py-3 rounded-lg font-bold">Send Message</button>
+                    </form>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="text-center py-6 mt-12 border-t border-white/10 opacity-70 text-sm">
+        <p>© 2025 Vishal Bhatt — All Rights Reserved. Built as a Single-File Portfolio.</p>
+    </footer>
+
+    <script>
+        // --- Single-Page Navigation Logic ---
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('.content-section');
+
+        function showSection(targetId) {
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            const targetSection = document.querySelector(targetId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+        }
+
+        function setActiveLink(hash) {
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === hash) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        // Handle navigation clicks
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href');
+                window.location.hash = targetId;
+                showSection(targetId);
+                setActiveLink(targetId);
+            });
+        });
+
+        // Handle initial load and hash changes
+        function handleHashChange() {
+            const hash = window.location.hash || '#home';
+            showSection(hash);
+            setActiveLink(hash);
+            // Scroll to top of the content area for a cleaner transition
+            window.scrollTo(0, 0); 
+        }
+
+        window.addEventListener('hashchange', handleHashChange);
+        window.addEventListener('DOMContentLoaded', handleHashChange);
+
+
+        // --- Dark / Light Mode Toggle ---
+        const themeToggle = document.getElementById("themeToggle");
+        const body = document.body;
+
+        // Load saved theme (using a key for this single file)
+        const savedTheme = localStorage.getItem("vb_portfolio_theme");
+
+        if (savedTheme === "light") {
+            body.classList.add("light-mode");
+            themeToggle.textContent = "☀️";
+        } else {
+            // Default is dark
+            body.classList.remove("light-mode");
+            themeToggle.textContent = "🌙";
+        }
+
+        // Toggle theme
+        themeToggle.addEventListener("click", () => {
+            body.classList.toggle("light-mode");
+
+            if (body.classList.contains("light-mode")) {
+                localStorage.setItem("vb_portfolio_theme", "light");
+                themeToggle.textContent = "☀️";
+            } else {
+                localStorage.setItem("vb_portfolio_theme", "dark");
+                themeToggle.textContent = "🌙";
+            }
+        });
+
+        // --- Certificate Lightbox Logic ---
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImage = document.getElementById("lightboxImage");
+        const closeLightbox = document.getElementById("closeLightbox");
+
+        function openLightbox(src) {
+            if (lightbox) {
+                lightbox.style.display = "flex";
+                lightboxImage.src = src;
+            }
+        }
+
+        if (closeLightbox) {
+            closeLightbox.addEventListener("click", () => {
+                lightbox.style.display = "none";
+            });
+        }
+
+        // Close lightbox on escape key
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" && lightbox && lightbox.style.display === "flex") {
+                lightbox.style.display = "none";
+            }
+        });
+    </script>
 </body>
 </html>
